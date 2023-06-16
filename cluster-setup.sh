@@ -1,8 +1,3 @@
-if [ "$EUID" -ne 0 ]; then
-	echo "Ejecuta este script como super usuario"
-	exit
-fi
-
 system_update() {
 	sudo apt update && sudo apt upgrade -y
 }
@@ -71,9 +66,16 @@ setting_config() {
 }
 
 main() {
+	if [ "$EUID" -ne 0 ]; then
+		echo "Ejecuta este script como super usuario"
+		exit
+	fi
+
 	system_update
 	open_ports
 	install_docker
 	install_k3s
 	setting_config
 }
+
+main
