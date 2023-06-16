@@ -27,12 +27,15 @@ Y a continuación configuramos nuestra máquina.
 ![24GB y 4CPU](/Img/24gby4cpu.png)
 
 Luego vamos a crear nuestra red interna (primary network y subnet).
+
 ![Creación de red](/Img/creamosLaRed.png)
 
 **Importante**, hay que descargar la clave pública, sino luego no nos podemos conectar a nuestra instancia.
+
 ![Descargamos clave](/Img/descargamosClaveSSH.png)
 
 Por último, configuramos la capacidad de disco de nuestra máquina. La máxima capacidad por cada cuenta es de 200GB.
+
 ![200GB](/Img/200GB.png)
 
 Una vez hemos seguido todos estos pasos, ya podemos crear nuestra instancia.
@@ -42,6 +45,7 @@ Una vez hemos seguido todos estos pasos, ya podemos crear nuestra instancia.
 Una vez creada la instancia, tenemos que abrir los puertos de nuestra red para que Kubernetes pueda funcionar correctamente.
 
 Dentro de nuestra instancia en la plataforma de Oracle, hacemos click en nuestra _Virtual cloud network_.
+
 ![Virtual network](/Img/abrirPuertos1.png)
 
 Se abrirá un nuevo menú donde podemos ver que existe nuestra subnet, hacemos click sobre nuestra subnet.
@@ -53,6 +57,7 @@ Luego abrimos la _Security list_.
 ![Security list](/Img/abrirPuertos3.png)
 
 Y ahora sí, añadimos nuestras _Ingress Rules_, tienen que quedar tal que así.
+
 ![Abrimos los puertos](/Img/abrirPuertos4.png)
 
 ## Abrimos puertos dentro del sistema operativo
@@ -84,6 +89,8 @@ iptables -A INPUT -p tcp --dport 6443 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 ```
+
+Podemos comprobar si se han abierto los puertos **[en esta web](https://www.yougetsignal.com/tools/open-ports/)**, aunque es posible que tarde en actualizarse. Yo recomiendo continuar con la instalación, y si luego hay problemas con los puertos entonces volver a este punto.
 
 ## Instalamos Docker
 
