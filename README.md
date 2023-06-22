@@ -1,10 +1,10 @@
 # ORI-ARM-Cluster
 
-Vamos a crear un cluster de kubernetes gratuito, con K3S, en la nube gratuita de Oracle.
+Vamos a crear un cluster de kubernetes gratuito, con K3S, en la nube _always free_ de Oracle.
 
 ## Creamos nuestra instancia
 
-Vamos a comnezar a crear nuestra instancia, una vez hemos creado nuestra cuenta en Oracle Free nos vamos a dirigir al buscador superior, y vamos a escribir _instance_.
+Vamos a comenzar a crear nuestra instancia, una vez hemos creado nuestra cuenta en Oracle Free Tier nos vamos a dirigir al buscador superior, y vamos a escribir _instance_.
 
 ![Abrir menú de instancia](/Img/AbrirMen%C3%BAInstancia.png)
 
@@ -16,7 +16,7 @@ Le asignamos un nombre a nuestra máquina.
 
 ![Asignar nombre](/Img/asignarNombre.png)
 
-Luego vamos directamente a crear nuestra imagen. Primero vamos a establecer la imagen que usaremos, que será _Ubuntu 20.04_.
+Luego vamos directamente a la sección de crear nuestra imagen y el tipo de equipo. Primero vamos a establecer la imagen que usaremos, que será _Ubuntu 20.04_.
 
 ![Imagen y máquina](/Img/imageAndShape.png)
 ![Imagen Ubuntu 20.04](/Img/ImagenUbuntu20.04.png)
@@ -30,7 +30,7 @@ Luego vamos a crear nuestra red interna (primary network y subnet).
 
 ![Creación de red](/Img/creamosLaRed.png)
 
-**Importante**, hay que descargar la clave pública, sino luego no nos podemos conectar a nuestra instancia.
+**Importante**, hay que descargar la clave pública, sino luego va a ser complicado conectarnos a nuestra instancia...
 
 ![Descargamos clave](/Img/descargamosClaveSSH.png)
 
@@ -144,7 +144,7 @@ Comprobamos que _kubectl_ funciona correctamente.
 sudo kubectl get nodes -o wide
 ```
 
-Damos permisos al config, y lo copiamos al .kube
+Damos permisos al config, y lo copiamos al directorio _.kube_
 
 ```bash
 sudo chmod 644 /etc/rancher/k3s/k3s.yaml
@@ -158,3 +158,5 @@ En la configuración, debemos añadir la línea `insecure-skip-tls-verify: true`
 Y también comentar el certificado, como vemos en la imagen.
 
 ![Config example](Img/exampleConfig.png)
+
+¡Listo!, ya podemos usar ese archivo de configuración para hacer uso de nuestro single-node cluster de Kubernetes.
