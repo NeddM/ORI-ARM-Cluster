@@ -135,7 +135,7 @@ sudo apt update -y && sudo apt upgrade -y && sudo systemctl reboot -y
 ## Instalamos k3s
 
 ```bash
-curl -sfL https://get.k3s.io | sh -s - --docker
+curl -sfL https://get.k3s.io | sh -s
 ```
 
 Comprobamos que _kubectl_ funciona correctamente.
